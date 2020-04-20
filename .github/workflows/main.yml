@@ -58,4 +58,4 @@ jobs:
         #curl -sL https://git.io/cowtransfer | sh
         chmod +x cowtransfer-uploader
         ./cowtransfer-uploader -s -p 8 downloads/ >msg.txt
-	curl -s 'https://oapi.dingtalk.com/robot/send?access_token=73a0ee6c58410d3c121695bc591ecc024d8d43ff9f873deb3f43524c086c2d6d' -H 'Content-Type: application/json' -d "{\"msgtype\": \"text\",\"text\": {\"content\": \"home:Git！ \"}}" 
+	curl -s 'https://oapi.dingtalk.com/robot/send?access_token=73a0ee6c58410d3c121695bc591ecc024d8d43ff9f873deb3f43524c086c2d6d' -H 'Content-Type: application/json' -d "{\"msgtype\": \"text\",\"text\": {\"content\": \"home:Git！$(cat msg.txt | grep Code) \"}}" 
