@@ -1,0 +1,65 @@
+#===================================================
+# URL: 
+# Description: 
+# Lisence: MIT
+# Author: CC
+#===================================================
+name: Upload latest OpenWrt to cowtransfer
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'downloadlist.txt'
+  watch:
+    types: started
+
+env:
+  SSH_ACTIONS: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Initialization environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo -E apt -y update
+        sudo -E apt -y upgrade
+        sudo -E apt -y install zip wget
+        sudo -E apt -y autoremove --purge
+        sudo -E apt -y clean
+    - name: Create download.sh
+      run: |
+        touch download.sh
+        chmod +x download.sh
+        cat >> download.sh <<EOF
+        #!/bin/bash
+        cat downloadlist.txt | while read line;
+        do 
+        wget \$line;
+        done
+        #zip -q -r downloads.zip \$PWD/*
+        EOF
+        mkdir downloads
+        cp download.sh downloadlist.txt downloads/
+    - name: Download files
+      run: |
+        cd downloads/
+        ./download.sh
+        rm download.sh
+    - name: SSH connection
+      uses: mxschmitt/action-tmate@v2
+      if: env.SSH_ACTIONS == 'true'
+
+    - name: Upload files to cowtransfer
+      run: |
+        #curl -sL https://git.io/cowtransfer | sh
+        chmod +x cowtransfer-uploader
+        ./cowtransfer-uploader -s -p 8 downloads/
