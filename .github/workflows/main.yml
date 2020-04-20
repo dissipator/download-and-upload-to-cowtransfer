@@ -24,7 +24,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
-
+    
+    - name: Install App
       run: |
         sudo -E apt -y install zip wget curl
         sudo -E apt -y autoremove --purge
