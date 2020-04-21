@@ -25,11 +25,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
     
-    - name: Install App
-      run: |
-        sudo -E apt -y install wget
-        sudo -E apt -y autoremove --purge
-        sudo -E apt -y clean
+    #- name: Install App
+    #  run: |
+    #    sudo -E apt -y install wget
+    #    sudo -E apt -y autoremove --purge
+    #    sudo -E apt -y clean
     - name: Create download.sh
       run: |
         touch download.sh
