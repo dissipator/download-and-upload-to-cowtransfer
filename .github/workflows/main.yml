@@ -62,5 +62,5 @@ jobs:
       run: |
         msg=$(cat msg.txt)
         echo $msg
-        url -s "http://sc.ftqq.com/$serverchan_sckey.send?text=git&desp=${msg}"
+        url -s "http://sc.ftqq.com/SCU50799T512e17d25796b887808fe66dc2914be65cd1107562261.send?text=git&desp=${msg}"
         #curl -sL https://oapi.dingtalk.com/robot/send?access_token=73a0ee6c58410d3c121695bc591ecc024d8d43ff9f873deb3f43524c086c2d6d' -H 'Content-Type: application/json -d "{\"msgtype\": \"text\",\"text\": {\"content\": \"home:Git \"}}" 
