@@ -61,4 +61,6 @@ jobs:
     - name: send msg
       run: |
         msg=$(cat msg.txt|grep Code)
-        curl -sL https://oapi.dingtalk.com/robot/send?access_token=73a0ee6c58410d3c121695bc591ecc024d8d43ff9f873deb3f43524c086c2d6d' -H 'Content-Type: application/json -d "{\"msgtype\": \"text\",\"text\": {\"content\": \"home:Git \"}}" 
+        echo $msg
+        cat msg.txt
+        #curl -sL https://oapi.dingtalk.com/robot/send?access_token=73a0ee6c58410d3c121695bc591ecc024d8d43ff9f873deb3f43524c086c2d6d' -H 'Content-Type: application/json -d "{\"msgtype\": \"text\",\"text\": {\"content\": \"home:Git \"}}" 
