@@ -1,1 +1,3 @@
- https://github.com/dissipator/download-and-upload-to-cowtransfer/archive/master.zip
+https://vision.uvic.ca/imw-challenge/TrainingData/reichstag.tar.gz
+https://vision.uvic.ca/imw-challenge/TrainingData/taj_mahal.tar.gz
+https://vision.uvic.ca/imw-challenge/TrainingData/temple_nara_japan.tar.gz
